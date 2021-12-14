@@ -5,14 +5,14 @@ Begin by setting your source folder in the config file. It should contain your f
 ### Windows ###
 ```
 cd [file location of easy-notice-board folder]
-source venv/bin/activate
+venv\Scripts\activate
 flask run
 ```
 
 ### Linux ###
 ```
 cd [file location of easy-notice-board folder]
-venv\Scripts\activate
+source venv/bin/activate
 flask run
 ```
 
