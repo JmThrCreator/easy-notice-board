@@ -21,12 +21,14 @@ def get_navigation_setting():
 
 def get_program_destination():
 
-    program_destination = os.path.abspath("load.py")
+    
     if sys.platform == "win32":
-        program_destination = program_destination.replace("\load.py", "")
+        program_destination = os.path.abspath("app\routes.py")
+        program_destination = program_destination.replace("\routes.py", "")
 
     if sys.platform == "linux":
-        program_destination = program_destination.replace("/load.py", "")
+        program_destination = os.path.abspath("app/routes.py")
+        program_destination = program_destination.replace("/routes.py", "")
     
     return program_destination
 

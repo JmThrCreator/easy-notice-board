@@ -8,7 +8,6 @@ app.config.from_object(Config)
 
 load_poppler()
 
-
 from app import routes
 
 

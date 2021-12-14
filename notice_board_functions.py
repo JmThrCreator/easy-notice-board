@@ -4,9 +4,12 @@ import shutil
 import re
 from pdf2image import convert_from_path
 from docx2pdf import convert
-from load_variables import get_source_folder
+from load_variables import get_source_folder, get_program_destination
 
 source_folder = get_source_folder()
+program_destination = get_program_destination()
+poppler_path = program_destination+r"\modules\poppler\Library\bin"
+
 
 def load_folders(program_destination, source_folder):
 
@@ -30,14 +33,14 @@ def find_folders():
     # returns all folders in the static folder
 
     folders = []
-    for filename in sorted(os.listdir("static/")):
-        if os.path.isdir("static/"+filename) and filename != "assets":
+    for filename in sorted(os.listdir("app/static/")):
+        if os.path.isdir("app/static/"+filename) and filename != "assets":
             folders.append(filename)
 
     return folders
 
 
-def convert_docx(directory, program_destination):
+def convert_docx(directory):
 
     # searches through the source folder and converts docx files to pdf
 
@@ -68,7 +71,7 @@ def load_items(source_dir, destination_dir):
 
             file_source = (source_dir+filename)
             file_destination = (destination_dir+filename).replace(".pdf"," page--1.jpg")
-            file = convert_from_path(file_source)
+            file = convert_from_path(file_source, poppler_path=poppler_path)
 
             count = 1
          
@@ -88,13 +91,17 @@ def load_items(source_dir, destination_dir):
     
 
     #removes files that aren't in the source
+    print(os.listdir(source_dir))
+
     for filename in os.listdir(destination_dir):
 
         pdf_filename = destination_dir+filename
         pdf_filename = pdf_filename.split(" page--", 1)
         pdf_filename = pdf_filename[0] + ".pdf"
-        pdf_filename = pdf_filename.split("/", 2)
-        pdf_filename = pdf_filename[2]
+        pdf_filename = pdf_filename.split("/", 3)
+        pdf_filename = pdf_filename[3]
+
+        
 
         if pdf_filename not in os.listdir(source_dir):
             os.remove(destination_dir+filename)
@@ -149,11 +156,11 @@ def get_items(source_dir, option, filter = "", option_2 = "small"):
             string_filter = r"\b"+filter+r"\b"
 
             if option == "all":
-                file = source_dir.replace("static/", "") +filename
+                file = source_dir.replace("app/static/", "") +filename
                 return_list.append([file, file_size[0], file_size[1], name])
 
             elif option == "filter" and re.search(string_filter, filename.replace(source_dir, "")):
-                file = source_dir.replace("static/", "") +filename
+                file = source_dir.replace("app/static/", "") +filename
                 return_list.append([file, file_size[0], file_size[1], name])
 
     # sorts files by date
@@ -169,6 +176,8 @@ def get_items(source_dir, option, filter = "", option_2 = "small"):
 def sort_by_date(list):  
 
     # sorts the list of files by date
+    print(source_folder)
+    print(list)
 
     return sorted(list, reverse=True, key=lambda x: os.path.getctime((source_folder+"/"+x[0]).replace(" page--1.jpg", ".pdf")))
 

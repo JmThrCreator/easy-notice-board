@@ -35,8 +35,8 @@ def home():
     for folder in folders:
         if folder in request.form:
             filepath_source = source_folder+"/"+folder+"/"
-            filepath_destination = "static/"+folder+"/"
-            convert_docx(filepath_source, program_destination)
+            filepath_destination = "app/static/"+folder+"/"
+            convert_docx(filepath_source)
             load_items(filepath_source, filepath_destination)
             return render_template("/folder.html", thumbnail_list=get_items(filepath_destination, "filter", "page--1"), folder=folder, navigation_setting = navigation_setting)
 
@@ -66,7 +66,7 @@ def folder():
         folder = filepath_dict[0]
         folder = folder.replace("reset", "")
         filepath_source = source_folder+"/"+folder+"/"
-        filepath_destination = "static/"+folder+"/"
+        filepath_destination = "app/static/"+folder+"/"
 
         convert_docx(filepath_source, program_destination)
         load_items(filepath_source, filepath_destination)
@@ -77,7 +77,7 @@ def folder():
         source_folder = filepath_dict[0]
         pages = filepath_dict[len(filepath_dict)-1]
         pages_length = len(pages)
-        source_dir = "static/"+filepath[:-pages_length]
+        source_dir = "app/static/"+filepath[:-pages_length]
         pages_name = pages.replace("page--1.jpg", "")
 
         return render_template("/display_page.html", thumbnail_list=get_items(source_dir, "filter", pages_name, "large"), folder=source_folder)
@@ -86,7 +86,7 @@ def folder():
 def display_page():
 
     source_folder = next(iter(request.form.to_dict()))
-    folder_filepath = "static/"+source_folder+"/"
+    folder_filepath = "app/static/"+source_folder+"/"
     return render_template("/folder.html", thumbnail_list=get_items(folder_filepath, "filter", "page--1"), folder = source_folder, navigation_setting = navigation_setting)
 
 
