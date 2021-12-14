@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <form method="POST" action="/home">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}"> -->
+        </head>
+        <style>
+            body{
+                background-image: url("static/assets/background.png");
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            button {
+                padding:0;
+                border:none;
+                background:none;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            button:hover {
+                filter: brightness(80%)
+            }
+            .icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 90vh;
+            }
+            ::-webkit-scrollbar {
+                display:none
+            }
+            .reset {
+                position:absolute;
+                padding-top:20px;
+                padding-left:20px;
+            }
+            
+        </style>
+
+        <body>
+            <div class="reset">
+                <button type="sumbit" name='reset'><img src="{{url_for('static', filename='assets/reset.png')}}" width="65" height="65" title="reset files"></button>
+            </div>
+
+            <div class="icons">
+                <button type="sumbit" name="folder_1"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_1"></button>
+                <button type="sumbit" name="folder_2"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_2"></button>
+                <button type="sumbit" name="folder_3"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_3"></button>
+            </div>
+        </body>
+    </form>
+</html>

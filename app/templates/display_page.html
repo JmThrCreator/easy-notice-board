@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <form method="POST" action="/display_page">
+        <head>
+            <meta charset="utf-8" />
+            <title></title>
+            <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+        </head>
+        <style>
+            img {
+                padding:0;
+                border:none;
+                background:none;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            button {
+                padding:0;
+                border:none;
+                background:none;
+            }
+            button:hover {
+                filter: brightness(80%)
+            }
+            body{
+                background-image: url("static/assets/background.png");
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .pages {
+                text-align: center;
+            }
+            img {
+                margin-left:20px;
+                margin-right:20px;
+                margin-top:20px;
+                margin-bottom:20px;
+            }
+            ::-webkit-scrollbar {
+                display:none
+            }
+            .back{
+                position:absolute;
+            }
+
+        </style>
+
+        <body>
+            <div class="back">
+                <button type="sumbit" name='{{folder}}'><img src="{{url_for('static', filename='assets/arrow.png')}}" width="62" height="50.5" title="return home"></button>
+            </div>
+
+            <div class="pages">
+                {% for item in thumbnail_list %}
+                <image type="sumbit" name='{{item[0]}}'><img src="{{url_for('static', filename=item[0])}}" width="{{item[1]}}" height="{{item[2]}}" title="{{item[3]}}"></button>
+                {% endfor %}
+            </div>
+        </body>
+    </form>
+</html>
