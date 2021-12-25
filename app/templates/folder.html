@@ -1,63 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-    <form method="POST" action="/folder">
-        <head>
-            <meta charset="utf-8" />
-            <title></title>
-            <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
-        </head>
-        <style>
-            button {
-                padding:0;
-                border:none;
-                background:none;
-                padding-left: 20px;
-                padding-right: 20px;
-                margin-left:20px;
-                margin-right:20px;
-                margin-top:20px;
-                margin-bottom:20px;
-                top:20px;
-            }
-            button:hover {
-                filter: brightness(80%)
-            }
-            body{
-                background-image: url("static/assets/background.png");
-                background-size: cover;
-                background-attachment: fixed;
-                font-family: Arial;
-            }
-            .thumbnails {
-                text-align: center;
-            }
-            .box{
-                display: inline-block;
-            }
-            ::-webkit-scrollbar {
-                display:none
-            }
-            .text{
-                position:relative;
-                bottom:10px;
-            }
-            
-        </style>
+{% extends "base.html" %}
 
-        <body>
-            <div class="back">
-                <button type="sumbit" name='home'><img src="{{url_for('static', filename='assets/arrow.png')}}" width="62" height="50.5" title="return home"></button>
-            </div>
+{% block style %}
+<style>
+    button {
+        padding:0;
+        border:none;
+        background:none;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left:20px;
+        margin-right:20px;
+        margin-top:20px;
+        margin-bottom:20px;
+        top:20px;
+    }
+    button:hover, button:focus {
+        filter: brightness(80%);
+        outline: none;
+    }
+    body{
+        background-image: url("static/assets/background.png");
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: Arial;
+    }
+    .thumbnails {
+        text-align: center;
+    }
+    .box{
+        display: inline-block;
+    }
+    ::-webkit-scrollbar {
+        display:none
+    }
+    .text{
+        position:relative;
+        bottom:10px;
+    }
+</style>
+{% endblock %}
 
-            <div class="thumbnails">
-                {% for item in thumbnail_list %}
-                <div class = "box">
-                    <button type="sumbit" name='{{item[0]}}'><img src="{{url_for('static', filename=item[0])}}" width="{{item[1]}}" height="{{item[2]}}" title="{{item[3]}}"></button>
-                    <div class = "text">
-                        {{item[3]}}
-                    </div>
+{% block body %}
+    <form action="/folder" method="post">
+        <div class="back">
+            <button style="position:relative; top:30px" type="sumbit" name='home'><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
+        </div>
+
+        <div class="thumbnails">
+            {% for item in thumbnail_list %}
+            <div class = "box">
+                <button type="sumbit" name='{{item[0]}}'><img src="static/{{item[0]}}" width="{{item[1]}}" height="{{item[2]}}" title="{{item[3]}}"></button>
+                <div class = "text">
+                    {{item[3]}}
                 </div>
-                {% endfor %}
             </div>
-        </body>
-</html>
+            {% endfor %}
+        </div>
+    </form>
+{% endblock %}

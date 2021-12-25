@@ -11,17 +11,14 @@ navigation_setting = get_navigation_setting()
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    print("index")
-    form = LoginForm()
-    return render_template("/login.html", title="Sign In", form=form)
+    return redirect("login")
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     if form.validate() and request.method == "POST":
-        flash("Login requested for email {}".format(form.email.data))
         return redirect("/home")
-    return render_template("/login.html", title="Sign In", form=form)
+    return render_template("/login.html", page_title="Login", form=form)
 
 @app.route("/home", methods=["GET", "POST"])
 def home():
@@ -32,22 +29,22 @@ def home():
 
     folders = find_folders()
 
-    for folder in folders:
-        if folder in request.form:
-            filepath_source = source_folder+"/"+folder+"/"
-            filepath_destination = "app/static/"+folder+"/"
-            convert_docx(filepath_source)
-            load_items(filepath_source, filepath_destination)
-            return render_template("/folder.html", thumbnail_list=get_items(filepath_destination, "filter", "page--1"), folder=folder, navigation_setting = navigation_setting)
+    if request.method == "POST":
+        for folder in folders:
+            if folder in request.form:
+                filepath_source = source_folder+"/"+folder+"/"
+                filepath_destination = "app/static/"+folder+"/"
+                convert_docx(filepath_source)
+                load_items(filepath_source, filepath_destination)
+                return render_template("/folder.html", thumbnail_list=get_items(filepath_destination, "filter", "page--1"), folder=folder, navigation_setting = navigation_setting)
 
-
-    return render_template("/home.html", folder_list = find_folders())
+    return render_template("/home.html", folder_list = folders)
 
 @app.route("/folder", methods=["GET", "POST"])
 def folder():
 
     if "home" in request.form:
-        return render_template("/home.html", folder_list = find_folders())
+        return render_template("/home.html", title="Home", folder_list = find_folders())
     
     filepath = next(iter(request.form.to_dict()))
     filepath_dict = filepath.split("/")

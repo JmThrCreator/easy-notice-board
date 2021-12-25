@@ -1,54 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-    <form method="POST" action="/home">
-        <head>
-            <meta charset="utf-8" />
-            <title></title>
-            <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}"> -->
-        </head>
-        <style>
-            body{
-                background-image: url("static/assets/background.png");
-                background-size: cover;
-                background-attachment: fixed;
-            }
-            button {
-                padding:0;
-                border:none;
-                background:none;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            button:hover {
-                filter: brightness(80%)
-            }
-            .icons {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 90vh;
-            }
-            ::-webkit-scrollbar {
-                display:none
-            }
-            .reset {
-                position:absolute;
-                padding-top:20px;
-                padding-left:20px;
-            }
-            
-        </style>
+{% extends "base.html" %}
 
-        <body>
-            <div class="reset">
-                <button type="sumbit" name='reset'><img src="{{url_for('static', filename='assets/reset.png')}}" width="65" height="65" title="reset files"></button>
-            </div>
+{% block style %}
+<style>
+    body{
+        background-image: url("static/assets/background.png");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    button {
+        padding:0;
+        border:none;
+        background:none;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    button:hover, button:focus {
+        filter: brightness(80%);
+        outline: none;
+    }
+    .icons {
+        text-align: center;
+        position: relative;
+        top: 250px;
+    }
+    ::-webkit-scrollbar {
+        display:none
+    }
+    .reset {
+        position:absolute;
+        padding-top:20px;
+        padding-left:20px;
+    }
+    .loading {
+        opacity: 0;
+        display:flex;
+        position:absolute;
+        top:50px;
+        left:47.25%;
+    }
+    .loading::after{
+        content:"";
+        width:50px;
+        height:50px;
+        border: 8px solid #fff;
+        border-top-color: #dfbf98;
+        border-radius:50%;
+        animation: loading 1s linear infinite;
+    }
+    @keyframes loading {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+    .box {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .text{
+        position:relative;
+        color:white;
+        bottom:100px;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 20px;
+        user-select: none; 
+        pointer-events: none;
+    }
+    
+</style>
+{% endblock %}
 
-            <div class="icons">
-                <button type="sumbit" name="folder_1"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_1"></button>
-                <button type="sumbit" name="folder_2"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_2"></button>
-                <button type="sumbit" name="folder_3"><img src="{{url_for('static', filename='assets/folder_image.png')}}" width="198.5" height="151" title="folder_3"></button>
-            </div>
-        </body>
-    </form>
-</html>
+{% block body %}
+<form action="/home" method="post">
+    <div class="reset">
+        <button type="sumbit" name='reset'><img src="static/assets/reset.png" width="65" height="65" title="reset files"></button>
+    </div>
+
+    <div class="icons">
+        {% for item in folder_list %}
+        <div class = "box">
+            <button class="button" onclick="disableButton()" type="sumbit" name='{{item}}'><img src="static/assets/folder_image.png" width="198.5" height="151" title='{{item}}'></button>
+            <div class = "text">{{item}}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="loading"></div>
+</form>
+{% endblock %}

@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
-{% block style %}       
+{% block style %} 
 <style>
-
     html, body {
         height: 100%;
     }
@@ -26,6 +25,22 @@
         background-attachment: fixed;
     }
 
+    .wrapper {
+        border: rounded;
+        border-radius:10px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        text-align:center;
+        margin-top:20px;
+        margin-bottom:20px;
+        font-weight:bold;
+    }
+
     .form-signin {
         width: 100%;
         max-width: 330px;
@@ -46,27 +61,11 @@
         padding-top:5px;
     }
 
-    h2 {
-        text-align:center;
-        margin-top:20px;
-        margin-bottom:20px;
-        font-weight:bold;
-    }
-
-    button:hover{
+    button:hover {
         filter: brightness(90%)
     }
 
-    .wrapper {
-        border: rounded;
-        border-radius:10px;
-        padding-left: 25px;
-        padding-right: 25px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    input{
+    input {
         border-radius: 10px;
         border: 1px solid #ccc;
         padding-left: 10px;
@@ -95,13 +94,11 @@
         left:54%; 
         border:none; 
         background:none
-    }
-
-    
+    }  
 </style>
 {% endblock %}
 
-{% block content %}
+{% block body %}
 <div class="wrapper" style="background-color:rgba(255, 255, 255, 0.6)">
     <div class="form-signin">
         <h2>Login</h2>
@@ -112,7 +109,7 @@
                 <br>
                 <label style="color: #949494">{{ form.password.label }}</label>
                 <div class="input_field"></div>{{ form.password(size=32, class=input) }}</div>
-                <!--<button id="forgot-password-button">Forgotten Password?</button>//-->
+                <button id="forgot-password-button">Forgotten Password?</button>
                 <br>
                 <input type=submit value=Login id=login-button>
             </div>

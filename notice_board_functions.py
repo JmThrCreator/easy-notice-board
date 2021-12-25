@@ -176,8 +176,6 @@ def get_items(source_dir, option, filter = "", option_2 = "small"):
 def sort_by_date(list):  
 
     # sorts the list of files by date
-    print(source_folder)
-    print(list)
 
     return sorted(list, reverse=True, key=lambda x: os.path.getctime((source_folder+"/"+x[0]).replace(" page--1.jpg", ".pdf")))
 
