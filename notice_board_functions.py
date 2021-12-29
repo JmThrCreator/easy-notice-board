@@ -91,7 +91,6 @@ def load_items(source_dir, destination_dir):
     
 
     #removes files that aren't in the source
-    print(os.listdir(source_dir))
 
     for filename in os.listdir(destination_dir):
 
@@ -116,9 +115,9 @@ def get_size(source_dir, filename):
     width, height = image.size
 
     if width > height:
-        return (297.75, 226.5)
+        return (320.32, 226.5)
     elif width < height:
-        return (226.5, 297.75)
+        return (226.5, 320.32)
     else:
         print("image error: size not A4 ratio")
         return (0, 0)
