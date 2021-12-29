@@ -1,12 +1,12 @@
 ## How to use
 
-Begin by setting your source folder in the config file. It should contain your folder directories with PDF and DOCX files within them. You can find an example of this in the examples folder. This source folder can be synced to your perfered cloud storage service for remote access if needed. You start the notice board by running the python virtual environment and running the flask app. This can be done by entering the following commands in cmd (different commands in windows and linux):
+Begin by setting your source folder in the config file. It should contain your folder directories with PDF and DOCX files within them. You can find an example of this in the examples folder. This source folder can be synced to your perfered cloud storage service for remote access if needed. You start the notice board by running the python virtual environment and running the flask app. This can be done by entering the following commands in cmd:
 
 ### Windows ###
 ```
 cd [file location of easy-notice-board folder]
 venv\Scripts\activate
-flask run
+(python -m) flask run
 ```
 
 ### Linux ###
