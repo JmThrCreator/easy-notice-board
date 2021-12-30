@@ -1,3 +1,7 @@
+# Easy Notice Board
+
+A program that allows you to easily create a notice board display for PDF and DOCX files.
+
 ## How to use
 
 Begin by setting your source folder in the config file. It should contain your folder directories with PDF and DOCX files within them. You can find an example of this in the examples folder. This source folder can be synced to your perfered cloud storage service for remote access if needed. You start the notice board by running the python virtual environment and running the flask app. This can be done by entering the following commands in cmd (different commands in windows and linux):
