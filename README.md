@@ -38,4 +38,4 @@ Tested for Chrome, Edge and Firefox.
 
 ## Issues
 
-If you don't have Microsoft Word installed, the program will not be able to convert docx files and will throw an error if it tries to. You can find an adjusted python file in examples. Alternatively, you can make sure not to put docx files in the program.
+If you don't have Microsoft Word installed, the program will not be able to convert DOCX files and will throw an error if it tries to. You can find an adjusted python file in examples. Alternatively, you can make sure not to put docx files in the program.
