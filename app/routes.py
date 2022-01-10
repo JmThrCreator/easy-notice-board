@@ -1,5 +1,4 @@
 from app import app
-from app.forms import LoginForm
 from flask import render_template, flash, redirect, request
 from notice_board_functions import find_folders, load_folders, load_items, get_source_folder, get_items, get_size, convert_docx
 from load_variables import get_program_destination, get_source_folder, get_navigation_setting
@@ -11,14 +10,7 @@ navigation_setting = get_navigation_setting()
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return redirect("login")
-
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    form = LoginForm(request.form)
-    if form.validate() and request.method == "POST":
-        return redirect("/home")
-    return render_template("/login.html", page_title="Login", form=form)
+    return redirect("home")
 
 @app.route("/home", methods=["GET", "POST"])
 def home():
