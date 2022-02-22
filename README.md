@@ -4,25 +4,11 @@ A program that allows you to easily create a notice board display for PDF and DO
 
 ## How to use
 
-Begin by setting your source folder in the config file. It should contain your folder directories with PDF and DOCX files within them. You can find an example of this in the examples folder. This source folder can be synced to your perfered cloud storage service for remote access if needed. You start the notice board by running the python virtual environment and running the flask app. This can be done by entering the following commands in cmd:
-
-### Windows ###
-```
-cd [file location of easy-notice-board folder]
-venv\Scripts\activate
-(python -m) flask run
-```
-
-### Linux ###
-```
-cd [file location of easy-notice-board folder]
-source venv/bin/activate
-flask run
-```
+Begin by running the 'run.py' file. The first time it's run, it will request that you select the source folder. This folder should contain your folder directories with PDF and DOCX files within them. You can find an example of one in the examples folder. Your source folder can be synced to your perfered cloud storage service for remote access if needed. The source folder can then be changed any time in the config file. The notice board should then open on your default browser.
 
 ## Configuration
 
-Open the config.ini file and change the filepath to your source folder. To test if it works, you can use the filepath for the folder named 'source' and change it later.
+Once it's been set, if you change the filepath to your source folder, open the config.ini file and paste it after 'SOURCE = '.
 
 By changing the value 'NAVIGATION' in the config file to 'False', it removes the back button after a folder is selected. This is to prevent users from going back from the folder page.
 
@@ -32,9 +18,7 @@ If the icons look small or big and vertically uncentered, this can be solved by 
 
 ## Compatibility
 
-Tested for Windows 10 and Ubuntu Linux; docx files can only be converted on windows systems with Microsoft Word installed.
-Tested with python versions 3.8.8, 3.8.10, 3.9.5 and 3.9.7.
-Tested for Chrome, Edge and Firefox.
+Tested for Windows 10; docx files can only be converted on Windows systems with Microsoft Word installed.
 
 ## Issues
 
