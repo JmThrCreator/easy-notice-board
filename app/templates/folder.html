@@ -23,6 +23,20 @@
         background-attachment: fixed;
         font-family: Arial;
     }
+    h1{
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        text-align: center;
+        position:relative;
+        bottom: 40px;
+    }
     .thumbnails {
         text-align: center;
     }
@@ -46,8 +60,10 @@
 {% block body %}
     <form action="/folder" method="post">
         <div class="back">
-            <button style="position:relative; top:30px" type="sumbit" name='home'><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
+            <button style="position:relative; top:30px; z-index: 1;" type="sumbit" name='home'><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
         </div>
+
+        <h1>{{folder}}</h1>
 
         <div class="thumbnails">
             {% for item in thumbnail_list %}
