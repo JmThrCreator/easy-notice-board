@@ -41,15 +41,25 @@
     ::-webkit-scrollbar {
         display:none
     }
+    .header ul{
+        position:relative;
+        top: 29px;
+        z-index: 1;
+        margin:0px;
+        padding:0px;
+    }
 
 </style>
 {% endblock %}
 
 {% block body %}
 <form action="/display_page" method="post">
-    <div class="back">
-        <button style="position:relative; top:30px" type="sumbit" name='{{folder}}'><img src="static/assets/arrow.png" width="62" height="50.5" title="return to folder"></button>
+    <div class="header">
+        <ul>
+            <button type="sumbit" name='{{folder}}'><img src="static/assets/arrow.png" width="62" height="50.5" title="return to folder"></button>
+        </ul>
     </div>
+
 
     <div class="pages">
         {% for item in thumbnail_list %}

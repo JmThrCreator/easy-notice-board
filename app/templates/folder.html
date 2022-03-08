@@ -61,7 +61,7 @@
         margin-bottom:20px;
         top:20px;
     }
-    button:hover, button:focus {
+    button:not(.dropdown_option):hover, button:not(.dropdown_option):focus {
         filter: brightness(90%);
         outline: none;
     }
@@ -113,8 +113,8 @@
         display: none;
         position: absolute;
         background-color: white;
-        left:180px;
-        min-width: 50px;
+        left:280px;
+        top:0px;
         overflow: auto;
         box-shadow:0px 0px 7px rgba(0,0,0,0.2);
         z-index: 1;
@@ -123,7 +123,6 @@
         font-size:20px;
     }
     .dropdown button{
-        width: 100px;
         height: 40px;
         border-radius:5px;
         margin-right:10px;
@@ -131,7 +130,14 @@
         background-color: white;
         margin-top:10px;
         margin-bottom:10px;
+        min-width: 100px;
+        overflow: auto;
+        text-align:left;
     }
+    .dropdown button:hover{
+        background-color: #f0f0f0;
+    }
+
     .show {display: block;}
 
     .loading {
@@ -166,9 +172,9 @@
             <button type="sumbit" name="home_button"><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
             <button type="button" onclick="dropdown()" name="sort"><img class = "dropdown_button" src="static/assets/sort.png" width="65.5" height="63" title="sort"></button>
             <div id="dropdown" class="dropdown">
-                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-bottom:5px;" name="name_button_{{folder}}">Name</button>
+                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-bottom:5px;" name="name_button_{{folder}}" title="sort by name">Name</button>
                 <br>
-                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-top:5px;" name="date_button_{{folder}}">Date</button>
+                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-top:5px;" name="date_button_{{folder}}" title = "sort by date">Date</button>
             </div>
         </ul>
     </div>
