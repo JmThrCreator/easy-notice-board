@@ -123,16 +123,7 @@ def get_size(source_dir, filename):
         return (0, 0)
 
 
-def get_items(source_dir, option, filter = "", option_2 = "small"):
-
-    # error handling
-
-    if option not in ("all", "filter"):
-        print("argument error: incorrect option\npossible options: 'all', 'filter'\nformat: (source_dir, option, [filter], [size])") 
-        return
-    elif option_2 not in ("small", "large"):
-        print("argument error: incorrect option\npossible options: 'small', 'large'\nformat: (source_dir, option, [filter], [size])")
-        return 
+def get_items(source_dir, option, filter = "", option_2 = "small", sort_by = "date"):
 
     # returns a list of files from the source folder, including its size and name
 
@@ -165,7 +156,10 @@ def get_items(source_dir, option, filter = "", option_2 = "small"):
     # sorts files by date
 
     if option_2 == "small":
-        return_list = sort_by_date(return_list)
+        if sort_by == "date":
+            return_list = sort_by_date(return_list)
+        elif sort_by == "name":
+            return_list = sort_by_order(return_list)
     elif option_2 == "large":
         return_list = sort_by_order(return_list)
 

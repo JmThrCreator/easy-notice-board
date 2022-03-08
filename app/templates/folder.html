@@ -1,5 +1,53 @@
 {% extends "base.html" %}
 
+{% block script %}
+<script>
+    // dropdown menu
+    function dropdown() {
+        document.getElementById("dropdown").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown_button')) {
+            var dropdowns = document.getElementsByClassName("dropdown");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    // loading
+    var clickCount = 0;
+
+    function disableButton() {
+        loading()
+        
+        if (clickCount == 1){
+            var elements = document.getElementsByClassName("button");
+            for(var i = 0; i < elements.length; i++) {
+                elements[i].disabled = true;
+            }
+        }
+        else {
+            ;
+        }
+        clickCount += 1
+    }
+
+    function loading(){
+
+        var loading = document.getElementsByClassName("loading")
+        var loading = loading[0];
+        loading.style.opacity = "100";
+
+    }
+</script>
+{% endblock %}
+
 {% block style %}
 <style>
     button {
@@ -54,26 +102,90 @@
         position:relative;
         bottom:10px;
     }
+    .header ul{
+        position:relative;
+        top: 22px;
+        z-index: 1;
+        margin:0px;
+        padding:0px;
+    }
+    .dropdown {
+        display: none;
+        position: absolute;
+        background-color: white;
+        left:180px;
+        min-width: 50px;
+        overflow: auto;
+        box-shadow:0px 0px 7px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius:10px;
+        font-family: Arial;
+        font-size:20px;
+    }
+    .dropdown button{
+        width: 100px;
+        height: 40px;
+        border-radius:5px;
+        margin-right:10px;
+        margin-left:10px;
+        background-color: white;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .show {display: block;}
+
+    .loading {
+        opacity: 0;
+        display:flex;
+        position:absolute;
+        top:50px;
+        left:47.25%;
+    }
+    .loading::after{
+        content:"";
+        width:50px;
+        height:50px;
+        border: 8px solid #fff;
+        border-top-color: #dfbf98;
+        box-shadow:0px 0px 7px rgba(0,0,0,0.1);
+        border-radius:50%;
+        animation: loading 1s linear infinite;
+    }
+    @keyframes loading {
+        to {
+            transform: rotate(1turn);
+        }
+    }
 </style>
 {% endblock %}
 
 {% block body %}
-    <form action="/folder" method="post">
-        <div class="back">
-            <button style="position:relative; top:30px; z-index: 1;" type="sumbit" name='home'><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
-        </div>
-
-        <h1>{{folder}}</h1>
-
-        <div class="thumbnails">
-            {% for item in thumbnail_list %}
-            <div class = "box">
-                <button type="sumbit" name='{{item[0]}}'><img src="static/{{item[0]}}" width="{{item[1]}}" height="{{item[2]}}" title="{{item[3]}}"></button>
-                <div class = "text">
-                    {{item[3]}}
-                </div>
+<form action="/folder" method="post">
+    <div class="header">
+        <ul>
+            <button type="sumbit" name="home_button"><img src="static/assets/arrow.png" width="62" height="50.5" title="return home"></button>
+            <button type="button" onclick="dropdown()" name="sort"><img class = "dropdown_button" src="static/assets/sort.png" width="65.5" height="63" title="sort"></button>
+            <div id="dropdown" class="dropdown">
+                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-bottom:5px;" name="name_button_{{folder}}">Name</button>
+                <br>
+                <button class="dropdown_option" onclick="disableButton()" type="submit" style="margin-top:5px;" name="date_button_{{folder}}">Date</button>
             </div>
-            {% endfor %}
+        </ul>
+    </div>
+
+    <h1>{{folder}}</h1>
+
+    <div class="thumbnails">
+        {% for item in thumbnail_list %}
+        <div class = "box">
+            <button type="sumbit" name='{{item[0]}}'><img src="static/{{item[0]}}" width="{{item[1]}}" height="{{item[2]}}" title="{{item[3]}}"></button>
+            <div class = "text">
+                {{item[3]}}
+            </div>
         </div>
-    </form>
+        {% endfor %}
+    </div>
+
+    <div class="loading"></div>
+</form>
 {% endblock %}

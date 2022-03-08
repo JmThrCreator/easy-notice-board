@@ -35,12 +35,26 @@ def home():
 @app.route("/folder", methods=["GET", "POST"])
 def folder():
 
-    if "home" in request.form:
+    if "home_button" in request.form:
         return render_template("/home.html", title="Home", folder_list = find_folders())
     
     filepath = next(iter(request.form.to_dict()))
     filepath_dict = filepath.split("/")
     indicator = filepath_dict[0]
+
+    try:
+        indicator = indicator[0:11]
+        source_folder = filepath_dict[0][12:]
+    except IndexError:
+        indicator = ""
+    
+    if indicator in ["name_button", "date_button"]:
+        folder_filepath = "app/static/"+source_folder+"/"
+        if indicator == "date_button":
+            sort_by = "date"
+        else:
+            sort_by = "name"
+        return render_template("/folder.html", thumbnail_list=get_items(folder_filepath, "filter", "page--1", sort_by=sort_by), folder=source_folder, navigation_setting = navigation_setting)
 
     try:
         indicator = indicator[0:5]
