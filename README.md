@@ -2,11 +2,11 @@
 
 A program that allows you to easily create a notice board display for PDF files.
 
-![Index Page](http://drive.google.com/uc?export=view&id=1gCPeYpp3i0oOxDAfLt7wzI1uCs2Wk3H2)
+<img src="http://drive.google.com/uc?export=view&id=1gCPeYpp3i0oOxDAfLt7wzI1uCs2Wk3H2" width="50%">
 
-![Folder Page](http://drive.google.com/uc?export=view&id=1aBAdjxN9-Glc79ZLR-4kr0oMJirQU-PC)
+<img src="http://drive.google.com/uc?export=view&id=1aBAdjxN9-Glc79ZLR-4kr0oMJirQU-PC" width="50%">
 
-![File Page](http://drive.google.com/uc?export=view&id=1nH01ySUyexmr8jozyOM31Vq2umqhbufG)
+<img src="http://drive.google.com/uc?export=view&id=1nH01ySUyexmr8jozyOM31Vq2umqhbufG" width="50%">
 
 ## How to use
 
@@ -21,7 +21,3 @@ By changing the value "NAVIGATION" in the config file to "False", it removes the
 All the assets can be edited to create a look to your liking; you will find them in static/assets.
 
 If the icons look small or big and vertically uncentered, this can be solved by adjusting the zoom setting on your browser.
-
-## Compatibility
-
-Tested for Windows 10 and 11.
