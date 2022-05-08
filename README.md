@@ -2,11 +2,11 @@
 
 A program that allows you to easily create a notice board display for PDF files.
 
-![Index Page](http://drive.google.com/uc?export=view&id=1gCPeYpp3i0oOxDAfLt7wzI1uCs2Wk3H2/view?usp=sharing)
+![Index Page](http://drive.google.com/uc?export=view&id=1gCPeYpp3i0oOxDAfLt7wzI1uCs2Wk3H2)
 
-![Folder Page](http://drive.google.com/uc?export=view&id=1aBAdjxN9-Glc79ZLR-4kr0oMJirQU-PC/view?usp=sharing)
+![Folder Page](http://drive.google.com/uc?export=view&id=1aBAdjxN9-Glc79ZLR-4kr0oMJirQU-PC)
 
-![File Page](http://drive.google.com/uc?export=view&id=1nH01ySUyexmr8jozyOM31Vq2umqhbufG/view?usp=sharing)
+![File Page](http://drive.google.com/uc?export=view&id=1nH01ySUyexmr8jozyOM31Vq2umqhbufG)
 
 ## How to use
 
