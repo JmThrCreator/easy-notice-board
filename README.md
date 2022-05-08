@@ -2,6 +2,12 @@
 
 A program that allows you to easily create a notice board display for PDF files.
 
+![Index Page](https://drive.google.com/file/d/1gCPeYpp3i0oOxDAfLt7wzI1uCs2Wk3H2/view?usp=sharing)
+
+![Folder Page](https://drive.google.com/file/d/1aBAdjxN9-Glc79ZLR-4kr0oMJirQU-PC/view?usp=sharing)
+
+![File Page](https://drive.google.com/file/d/1nH01ySUyexmr8jozyOM31Vq2umqhbufG/view?usp=sharing)
+
 ## How to use
 
 Begin by running the "run.py" file. The first time it's run, it will request that you select the source folder. This folder should contain your folder directories with PDF files within them. You can find an example of one in the "examples" folder. Your source folder can be synced to your perfered cloud storage service for remote access if needed. The source folder location can then be changed any time in the config file. The notice board should then open in your default browser.
