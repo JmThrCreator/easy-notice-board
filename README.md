@@ -8,6 +8,16 @@ A program that allows you to easily create a notice board display for PDF files.
 
 <img src="http://drive.google.com/uc?export=view&id=1nH01ySUyexmr8jozyOM31Vq2umqhbufG" width="50%">
 
+## Setup
+
+Create a virtual environment and install the dependencies using the following commands:
+
+```
+python3 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
 ## How to use
 
 Begin by running the "run.py" file. The first time it's run, it will request that you select the source folder. This folder should contain your folder directories with PDF files within them. You can find an example of one in the "examples" folder. Your source folder can be synced to your perfered cloud storage service for remote access if needed. The source folder location can then be changed any time in the config file. The notice board should then open in your default browser.
