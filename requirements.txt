@@ -1,0 +1,5 @@
+flask
+pipenv
+pillow
+pdf2image
+configobj
